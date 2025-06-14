@@ -1,0 +1,46 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+def generate_random_color():
+    return np.random.rand(3,)
+
+def generate_color_combination(num_colors):
+    return [generate_random_color() for _ in range(num_colors)]
+
+def plot_color_combination(colors):
+    fig, ax = plt.subplots()
+    for i, color in enumerate(colors):
+        ax.add_patch(plt.Rectangle((i, 0), 1, 1, facecolor=color))
+
+    ax.set_xlim(0, len(colors))
+    ax.set_ylim(0, 1)
+    ax.axis('off')
+    plt.show()
+
+# Example: generate and plot a color combination with 5 colors
+num_colors = 5
+colors = generate_color_combination(num_colors)
+plot_color_combination(colors)
+
+
+import random
+
+def generate_random_color():
+    return "#{:06x}".format(random.randint(0, 0xFFFFFF))
+
+def create_outfit():
+    outfit = {
+        'shirt': generate_random_color(),
+        'pants': generate_random_color(),
+        'shoes': generate_random_color()
+    }
+    return outfit
+
+def display_outfit(outfit):
+    print(f"Shirt Color: {outfit['shirt']}")
+    print(f"Pants Color: {outfit['pants']}")
+    print(f"Shoes Color: {outfit['shoes']}")
+
+# Example: generate and display a random outfit
+random_outfit = create_outfit()
+display_outfit(random_outfit)
